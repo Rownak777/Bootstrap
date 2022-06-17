@@ -1,0 +1,444 @@
+function  clevertap_userlogin_push(value){
+    //clevertap.init();
+    //clevertap.setLogLevel(3);
+
+    clevertap.onUserLogin.push(value);
+}
+
+function  clevertap_event_push(key, value){
+    //clevertap.init();
+    //clevertap.setLogLevel(3);
+    clevertap.event.push(key, value);
+}
+
+;(function ($) {
+    'use strict';
+
+    /*(function initMicromodal() {
+        document.body.addEventListener('mousedown', (e) => close(e.target));
+        document.body.addEventListener('touchstart', (e) => close(e.target));
+
+        /!** @param {HTMLElement} target *!/
+        function close(target) {
+            if (!target.hasAttribute('data-close-parent-modal')) return;
+            const modal = target.closest('.modal');
+            if (modal) MicroModal.close(modal.id);
+        }
+    }());*/
+
+
+    $(document).ready(function () {
+
+        $('#mobile-search-icon a').on('click', function (e) {
+            e.preventDefault();
+
+            $('#mobile-menu-search-ind').toggleClass('active');
+        });
+
+        let $all_courses_active_class = '';
+        if ($(document.body).hasClass('woocommerce-shop')) {
+            $all_courses_active_class = 'current-cat';
+        }
+
+        var $all_courses_html = '<li class="cat-item cat-item-all ' + $all_courses_active_class + '"><a aria-current="page" href="' + bohubrihi_custom.all_courses_url + '">All Courses</a></li>';
+
+        $($all_courses_html).prependTo('#lct-widget-product_course_type');
+
+        $('.mfp_play_trig').magnificPopup({
+            type  : 'iframe',
+            iframe: {
+                markup  : '<div class="mfp-iframe-scaler">' +
+                    '<div class="mfp-close"></div>' +
+                    '<iframe class="mfp-iframe" frameborder="0" allow="autoplay"></iframe>' +
+                    '</div>',
+                patterns: {
+                    youtube: {
+                        index: 'youtube.com/',
+                        id   : 'v=',
+                        src  : 'https://www.youtube.com/embed/%id%?autoplay=1'
+                    }
+                }
+            }
+        });
+
+        //course listing filter
+        $('.woo-filter-btn').on('click', function (e) {
+            e.preventDefault();
+
+            $('#right-sidebar-inner').toggleClass('active');
+        });
+
+        $('.woo-filter-close a').on('click', function (e) {
+            e.preventDefault();
+            $('#right-sidebar-inner').removeClass('active');
+        });
+        //course listing filter end
+
+
+        //mobile menu dropdown new system
+        $('.mobile-menu').on('click', function (e) {
+            e.preventDefault;
+            $('#mobile-dropdown').toggleClass('active');
+        });
+        $('.mobile-dropdown-close a').on('click', function (e) {
+            e.preventDefault();
+            $('#mobile-dropdown').removeClass('active');
+        });
+
+
+        //var o = $j("#mobile-dropdown .menu-item-has-children").children("a").append('<span class="dropdown-toggle"></span>');
+        //var n = $j(".dropdown-toggle")
+        var e, t, i, o, n;
+        //$j("body").hasClass("dropdown-mobile") && (
+
+        /*$j(".mobile-menu").on("click", function () {
+        return $j("#mobile-dropdown").slideToggle(500), $j(this).toggleClass("opened"), $j(".mobile-menu > .hamburger").toggleClass("is-active"), !1
+    }),*/
+
+        e = function (e) {
+            $j("#mobile-dropdown").slideUp(200), $j(".mobile-menu").removeClass("opened"), $j(".mobile-menu > .hamburger").removeClass("is-active")
+        },
+
+            t = $j(".mobile-menu > .hamburger"), i = !1, t.on("click", function () {
+            i = !i, t.attr("aria-expanded", i)
+        }), (o = $j("#mobile-dropdown .menu-item-has-children")).children("a").append('<span class="dropdown-toggle"></span>'), n = $j(".dropdown-toggle"), "link" == oceanwpLocalize.sidrDropdownTarget && (n = $j("#mobile-dropdown li.menu-item-has-children > a")), n.on("tap click", function () {
+            var e,
+                t = (e = "link" == oceanwpLocalize.sidrDropdownTarget ? $j(this).parent("li") : $j(this).parent("a").parent("li")).parents("li");
+            e.children("ul");
+            return e.hasClass("active") ? e.removeClass("active").children("ul").slideUp("fast") : (o.not(t).removeClass("active").children("ul").slideUp("fast"), e.addClass("active").children("ul").slideDown("fast")), !1
+        }),
+
+            /*$j(document).on("click", function () {
+                e()
+            }).on("click", "#mobile-dropdown", function (e) {
+                e.stopPropagation()
+            }), */
+            /*$window.resize(function () {
+                960 <= $window.width() && e()
+                }), */
+            $j('#mobile-dropdown li a[href*="#"]:not([href="#"])').on("click", function () {
+                e()
+            });
+
+
+        //);
+
+        /*$('#parent_tab .eael-tabs-nav').stickr({
+            offsetTop: 30,
+        });
+
+        $('#parent_tab .eael-tabs-content').stickr({
+            offsetTop: 50,
+        });
+
+        $('#child_card').stickr({
+            offsetTop: 0,
+        });*/
+
+        //sticky sidebar
+
+        //$('#parent_tab').sticky({
+        /*$('#eael-advance-tabs-6ad32ef').sticky({
+            topSpacing: 10,
+            //widthFromWrapper: true,
+        });*/
+
+        /*$('#child_card').sticky({
+            topSpacing: 10,
+            //widthFromWrapper:true
+        }).on('sticky-bottom-reached', function () {
+            console.log("Bottom reached");
+        });*/
+
+        //console.log($('#parent_tab .elementor-column-wrap'));
+
+        //var $parent_tab = $('#parent_tab .elementor-column-wrap')[0];
+
+        //console.log($parent_tab);
+
+        //$('#parent_tab .elementor-column-wrap:first').stickyfloat( {
+
+
+        /*$('.stickyfloat').stickyfloat( {
+            //startOffset: '10px',
+            duration : 0,
+        } );
+*/
+        //console.log($('#parent_tab .elementor-column-wrap:first'));
+
+        $('#child_card').stickyfloat({
+            //startOffset: 10,
+            duration: 0,
+        });
+
+
+        /*setTimeout(() => {
+            console.log('hi there tab');
+
+            $('#main_card').stickyfloat({
+                //startOffset: '10px',
+                duration: 0,
+            });
+        }, 5000);*/
+
+        $('#right-sidebar-inner .sidebar-box').each(function (index, element) {
+            var $element = $(element);
+
+
+            $element.find('.widget-title').on('click', function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                $this.next().toggle();
+                $this.toggleClass('widget-title-closed');
+
+
+            });
+        });
+
+        $('.testimonialSlider').slick({
+            dots          : true,
+            slidesToShow  : 2,
+            slidesToScroll: 1,
+            arrows        : false,
+            responsive    : [
+                {
+                    breakpoint: 700,
+                    settings  : {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+
+        $('.course-slider').slick({
+            dots          : true,
+            slidesToShow  : 4,
+            slidesToScroll: 1,
+            arrows        : false,
+            responsive    : [
+                {
+                    breakpoint: 991,
+                    settings  : {
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 700,
+                    settings  : {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 450,
+                    settings  : {
+                        slidesToShow: 1
+                    }
+                },
+
+            ]
+        });
+
+        //clipboard copy
+        var clipboard = new ClipboardJS('#copyorderid');
+
+        clipboard.on('success', function (e) {
+            //console.info('Action:', e.action);
+            //console.info('Text:', e.text);
+            //console.info('Trigger:', e.trigger);
+
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function (e) {
+            //console.error('Action:', e.action);
+            //console.error('Trigger:', e.trigger);
+        });
+
+        //console.log('hi there');
+
+        /*$('input[name="fake-payment-method"]').on('change',function (e){
+            //e.preventDefault();
+
+            var $this = $(this);
+
+            console.log($this);
+
+            var parent = $this.closest('li');
+            $('#bohubrihi-payment-method li').removeClass('payment-active');
+            parent.addClass('payment-active')
+        });*/
+
+        $('form.woocommerce-checkout').on('click', 'input[name="fake-payment-method"]', function (event) {
+            //event.preventDefault(); // Disable submit for testing
+
+            var $this = $(this);
+
+            //console.log($this);
+
+            var parent = $this.closest('li');
+            $('#bohubrihi-payment-method li').removeClass('payment-active');
+            parent.addClass('payment-active')
+        });
+
+        //https://wordpress.stackexchange.com/questions/342148/list-of-js-events-in-the-woocommerce-frontend
+
+        //in checkout page
+        if ($(document.body).hasClass('woocommerce-checkout')) {
+            if ($('.payment_methods.methods').find('.woocommerce-notice').length) {
+                $('#woocommerce-checkout-payment').hide();
+            } else {
+                $('#woocommerce-checkout-payment').show();
+            }
+
+            $('.woocommerce-checkout form.checkout_coupon').show();
+
+            //console.log('in checkout page');
+
+            //MicroModal.show('modal-1-wc-l');
+
+            //$('#billing_email').prop('disabled', true);
+            $('#billing_email').prop("readonly", true);
+
+            if (bohubrihi_custom.is_logged_in == 0) {
+
+
+                $('.woocommerce-account-fields').remove();
+
+                $('.woocommerce-notices-wrapper').clone().prependTo('#customer_checkout_login');
+                $('.woocommerce-notices-wrapper').clone().prependTo('#customer_checkout_register');
+
+
+                var modal_l = $('#checkout-modal-trigger-l').magnificPopup({
+                    items         : {
+                        src : '#modal-1-wc-l',
+                        type: 'inline'
+                    },
+                    type          : 'inline',
+                    disableOn     : 0,
+                    closeBtnInside: true,
+                    modal         : true,
+                    midClick      : true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+                }).magnificPopup('open');
+
+                var modal_r = $('#checkout-modal-trigger-r').magnificPopup({
+                    items         : {
+                        src : '#modal-1-wc-r',
+                        type: 'inline'
+                    },
+                    type          : 'inline',
+                    disableOn     : 0,
+                    closeBtnInside: true,
+                    modal         : true,
+                    midClick      : true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+                });
+
+                //console.log(modal_l.instance);
+                //modal_l.open();
+                //modal_r.magnificPopup('open');
+
+                $('#modal-1-wc-l').on('click', '.checkout-modal-r-call', function (e) {
+                    e.preventDefault();
+
+                    modal_l.magnificPopup('close');
+                    modal_r.magnificPopup('open');
+                });
+
+                $('#modal-1-wc-r').on('click', '.checkout-modal-l-call', function (e) {
+                    e.preventDefault();
+
+                    modal_r.magnificPopup('close');
+                    modal_l.magnificPopup('open');
+                });
+
+                $('form.woocommerce-checkout').on('checkout_place_order', function (e) {
+                    e.preventDefault();
+
+                    modal_r.magnificPopup('close');
+                    modal_l.magnificPopup('open');
+
+                    return false;
+                });
+
+
+            }//if guest
+
+            
+        }
+
+        if (bohubrihi_custom.is_logged_in == 0) {
+            $('.login-panel-header-wrap a.register-button').on('click', function (e){
+               e.preventDefault();
+
+               $('.login-header-panel').removeClass('active');
+               $('.register-header-panel').addClass('active');
+
+               $('#customer_login .customer_login_login').hide();
+               $('#customer_login .customer_login_register').show();
+
+
+            });
+
+            $('.login-panel-header-wrap a.login-button').on('click', function (e){
+                e.preventDefault();
+
+
+                $('.register-header-panel').removeClass('active');
+                $('.login-header-panel').addClass('active');
+
+                $('#customer_login .customer_login_login').show();
+                $('#customer_login .customer_login_register').hide();
+            });
+        }
+
+
+        //on woocommerce checkout form update
+        $(document.body).on('update_checkout', function (e) {
+            //console.log($('form.checkout').serialize());
+            //console.log(wc_cart_fragments_params);
+            //console.log(wc_checkout_params );
+        });
+
+        $(document.body).on('init_checkout', function (e) {
+            //console.log(e);
+            //console.log('checkout page init');
+            //console.log(wc_cart_fragments_params);
+            //console.log(wc_checkout_params );
+            //console.log(e.data);
+
+            //console.log($('.payment_methods.methods').find('.woocommerce-notice'));
+
+            if ($('.payment_methods.methods').find('.woocommerce-notice').length > 0) {
+                $('#payment').hide();
+                // console.log('payments hidden in checkout page');
+            } else {
+                $('#payment').show();
+                //console.log('payments shown in checkout page');
+            }
+
+            $('.woocommerce-checkout form.checkout_coupon').show();
+
+
+        });
+
+        $(document.body).on('updated_checkout', function (e) {
+            //console.log(e);
+            //console.log('checkout page updated');
+            //console.log(wc_cart_fragments_params);
+            //console.log(wc_checkout_params );
+            //console.log(e.data);
+
+            //console.log($('.payment_methods.methods').find('.woocommerce-notice'));
+
+            $('.woocommerce-checkout form.checkout_coupon').show();
+
+            if ($('.payment_methods.methods').find('.woocommerce-notice').length > 0) {
+                $('#payment').hide();
+                //console.log('payments hidden in checkout page');
+            } else {
+                $('#payment').show();
+                //console.log('payments shown in checkout page');
+            }
+        });
+    });
+})(jQuery);

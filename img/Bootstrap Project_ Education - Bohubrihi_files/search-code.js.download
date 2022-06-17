@@ -1,0 +1,86 @@
+;(function ($) {
+    'use strict';
+
+
+    function SearchUniqueCertificateID() {
+
+        //return false;
+
+        var sUniqueCertificateCode = $("#UniqueCertificateCode").val();
+
+
+
+        $("#UniqueCertificateVerification").html('' +
+            '<div class="ln_solid"></div>' +
+            '<div class="form-group">' +
+            '   <div class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center"> <img src="' + sLoadingGif + '" style="width: 50px; display: inline-block; " /> </div>' +
+            '</div>' +
+            '');
+
+        $.ajax({
+            url     : sCodeSearchURL + "&UniqueCertificateCode=" + encodeURIComponent(sUniqueCertificateCode),
+            dataType: "JSON",
+            success : function (res) {
+                if (res['type'] == "Fail")
+                    $("#UniqueCertificateVerification").html('' +
+                        '<div class="ln_solid"></div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center; font-weight: bold; color: red;">' + res['message'] + '</div>' +
+                        '</div>' +
+                        '');
+                else if (res['type'] == "Success")
+                    $("#UniqueCertificateVerification").html('' +
+                        '<div class="ln_solid"></div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">First Name:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['first_name'] + '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">Last Name:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['last_name'] + '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">Course Name:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['course'] + '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">Lesson Name:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['lesson'] + '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">Quiz Name:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['quiz'] + '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">Certificate Name:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['certificate'] + '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '   <div class="control-label col-md-3 col-sm-3 col-xs-12" style="font-weight: bold;">Date of Certificate:</div>' +
+                        '   <div class="control-label col-md-6 col-sm-6 col-xs-12" style="text-align: left;">' + res['certificate_date'] + '</div>' +
+                        '</div>' +
+                        '');
+            }
+        });
+
+        return false;
+
+
+    }
+
+
+    $(document).ready(function () {
+        $('#learndashcertverifyform').on('submit', function (e){
+            e.preventDefault();
+
+
+            //console.log('form submitted');
+
+            //return false;
+            SearchUniqueCertificateID();
+        });
+    });
+
+
+
+})(jQuery);

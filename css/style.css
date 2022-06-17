@@ -1,0 +1,58 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.banner-container {
+    background-color: cadetblue;
+
+}
+.banner-column{
+    background-color: darkgray;
+}
+.navbar-container{
+    top :0;
+ background-color: darkslategrey;
+ position: sticky;
+
+}
+.about-container{
+    background-color: dodgerblue;
+}
+.education-container{
+    background-color: aliceblue;
+}
+ .bg-redtype{
+    background-color: firebrick;
+
+ }
+ .bg-redtype:hover{
+     color: black! important ;
+ }
+ .redtype-color{
+    color: firebrick;
+ }
+ .circle{
+    background-color: firebrick;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+ }
+ .project-container{
+    background-color: royalblue;    
+}
+.form-container{
+    background-color: lightslategray;
+}
+.inner-form{
+    background-color: darkgray;
+}
+
+.footer{
+    background-color: dodgerblue;
+}
+.circle{
+
+    text-align: center;
+}
+.circle:hover{
+    background-color: azure;
+}
